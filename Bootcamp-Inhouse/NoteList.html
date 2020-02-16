@@ -28,7 +28,7 @@
 </body>
 <script>
     var listView = document.getElementById('listview');
-     listView.innerHTML = "<div></div>"  ;
+     listView.innerHTML = "<div>hello" +localStorage.getItem(0)+ "</div>"  ;
      renderList(); 
   function renderList() {
         var list = [];
@@ -51,9 +51,9 @@
     function handleEdit(i) {
         console.log(i);
         sessionStorage.setItem(i, 'edit');
-        var url = 'Createnote.html' + someValue;
+        var url = 'Createnote.html?id=' + i;
  
-        window.location.href = 'Createnote.html';
+        window.location.href = url;
         
     }
 

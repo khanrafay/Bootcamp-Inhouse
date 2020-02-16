@@ -1,0 +1,9 @@
+-Create
+-Update
+-Delete
+-List
+-Search/Filer
+-Sort
+   -by date
+   -by last updated
+   -by alphabet

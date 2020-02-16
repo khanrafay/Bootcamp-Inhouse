@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <script>
-sessionStorage.clear();
+
 </script>
 
 <body>
@@ -28,40 +28,34 @@ sessionStorage.clear();
 </body>
 <script>
 
-    var toBeEdit;
-    var idToBeEdit;
-    for (var i = 0; i < sessionStorage.length; i++) {
-        toBeEdit = localStorage.getItem(i);
-        idToBeEdit = i;
-        console.log(toBeEdit);
-    }
-    var id = localStorage.length;
-    var heading = document.getElementById('heading').value;
-    var Note = document.getElementById('note').value;
+    var isEdit = false;
+    var idToBeEdit = window.location.search.split('=')[1];
+    var id = 0;
 
-    if (toBeEdit != null) {
-        console.log(toBeEdit);
+    for (var i = 0; i < localStorage.length; i++) {
+
+        if (i == idToBeEdit) {
+            toBeEdit = localStorage.getItem(i);
+            isEdit = true;
+            console.log(toBeEdit);
+        }
+    }
+
+    if (isEdit) {
+
         document.getElementById('heading').value = toBeEdit.split(',')[0];
         document.getElementById('note').value = toBeEdit.split(',')[1];
-    }
-
-    var id;
-    if (toBeEdit == null) {
-         id = localStorage.length;
-    } else{
-         id = idToBeEdit; 
+        id = window.location.search.split('=')[1];
     }
 
     function handleBtnAdd() {
         var heading = document.getElementById('heading').value;
         var Note = document.getElementById('note').value;
-        
-
         window.localStorage.setItem(id, [heading, Note]);
         id++;
         document.getElementById('heading').value = '';
         document.getElementById('note').value = '';
-        sessionStorage.clear();
+
     }
 </script>
 
