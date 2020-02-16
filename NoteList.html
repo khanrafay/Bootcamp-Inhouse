@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .grey {
+        background-color: grey;
+    }
+</style>
+<script>
+   
+
+</script>
+
+<body>
+    <br/>
+    <br/>
+    Filter: 
+    <input type="text" onkeypress="renderList()"/>
+    <a href='Createnote.html'>Create Note</a>
+    <div id="listview">
+       
+    </div>
+</body>
+<script>
+    var listView = document.getElementById('listview');
+     listView.innerHTML = "<div></div>"  ;
+     renderList(); 
+  function renderList() {
+        var list = [];
+        
+
+        for (var i = 0; i <= localStorage.length; i++) {
+            list = localStorage.getItem(i);
+
+            if (list != null) {
+                document.write("<div id='note' class='grey'> " +
+                    "<label style='display:none'>" + i + "</label> <h1>" +
+                    list.split(',')[0] +
+                    " </h1><span>" +
+                    list.split(',')[1] + "</span>" +
+                    "<button onclick='handleEdit(" + i + ")'>Edit</button>" +
+                    "</div>");
+            }
+        }
+    }
+    function handleEdit(i) {
+        console.log(i);
+        sessionStorage.setItem(i, 'edit');
+        var url = 'Createnote.html' + someValue;
+ 
+        window.location.href = 'Createnote.html';
+        
+    }
+
+</script>
+</html>
