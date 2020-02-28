@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+
+</script>
+
+<body>
+    <div>
+        <a href="NoteList.html">List</a>
+        <br />
+        <br />
+
+        Enter the heading: <input id='heading' type='text' required />
+        <br />
+        <br />
+        The Note: <textarea id='note' required></textarea>
+        <br />
+        <br />
+        <button id='btnAdd' onclick="handleBtnAdd()">Add this note</button>
+
+    </div>
+</body>
+<script>
+
+    var isEdit = false;
+    var idToBeEdit = window.location.search.split('=')[1];
+    var id = 0;
+
+    for (var i = 0; i < localStorage.length; i++) {
+
+        if (i == idToBeEdit) {
+            toBeEdit = localStorage.getItem(i);
+            isEdit = true;
+            console.log(toBeEdit);
+        }
+    }
+
+    if (isEdit) {
+
+        document.getElementById('heading').value = toBeEdit.split(',')[0];
+        document.getElementById('note').value = toBeEdit.split(',')[1];
+        id = window.location.search.split('=')[1];
+    }
+
+    function handleBtnAdd() {
+        var heading = document.getElementById('heading').value;
+        var Note = document.getElementById('note').value;
+        window.localStorage.setItem(id, [heading, Note]);
+        id++;
+        document.getElementById('heading').value = '';
+        document.getElementById('note').value = '';
+
+    }
+</script>
+
+</html>

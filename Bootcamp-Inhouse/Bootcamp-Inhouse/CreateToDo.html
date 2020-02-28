@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input id="txtTitle" type="text" placeholder="Title" />
+        <br />
+        <br />
+        <textarea id="txtTextBox" placeholder="Enter the Message"></textarea>
+        <br />
+        <br />
+        <button id="btnSave" onclick="AddToDo()">Add</button>
+        <a href="TodoList.html">Todo List</a>
+    </div>
+
+    <script>
+
+
+        function AddToDo() {
+            var title = document.getElementById("txtTitle").value
+            var textBox = document.getElementById("txtTextBox").value
+            var items = []
+            var todoList
+
+            if (localStorage.getItem("Item") == null) {
+                todoList = {
+                    title: title,
+                    Message: textBox
+                }
+                items.push(todoList)
+                localStorage.setItem("Item", JSON.stringify(items))
+            }
+            else {
+                var retrieveObect = localStorage.getItem("Item")
+                var stored = JSON.parse(retrieveObect)
+
+                todoList = {
+                    title: title,
+                    Message: textBox
+                }
+                stored.push(todoList)
+                localStorage.setItem("Item", JSON.stringify(stored))
+            }
+
+
+            document.getElementById("txtTitle").value = ""
+            var textBox = document.getElementById("txtTextBox").value = ""
+        }
+
+
+
+    </script>
+</body>
+
+</html>

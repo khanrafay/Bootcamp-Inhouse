@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .listbox {
+        width: 100%;
+        background-color: grey;
+    }
+</style>
+<script>
+
+
+</script>
+
+<body>
+    <br />
+    <br />
+    Filter:
+    <input type="text" onkeypress="renderList()" />
+    <a href='CreateToDo.html'>Create Note</a>
+    <div id="listview">
+
+    </div>
+</body>
+<script>
+    var listBox = document.getElementById("listview").innerHTML
+    var listFromStorage = JSON.parse(localStorage.getItem("Item"))
+
+    listFromStorage.map((item) => {
+        document.getElementById("listview").innerHTML += "<div class='listbox'><span><h3 id="+item.title+">" + item.title + "</h3>" + item.Message + "</span></div>"
+        document.getElementById("listview").innerHTML += '<button onclick="handleEdit(\'' + item.title+ '\')">Edit</button>'
+    })
+
+    function handleEdit(id) {
+        var title = document.getElementById(id)
+        console.log(title)
+    }
+
+</script>
+
+</html>
